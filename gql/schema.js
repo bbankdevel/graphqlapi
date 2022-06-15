@@ -1,5 +1,17 @@
 const {gql} = require("apollo-server");
 const typeDefs = gql`
+	type Travel {
+		id: ID
+		client: String
+		origin: String
+		destin: String
+		distance : String
+		amount :  String
+		createdAt: String
+		status: String
+		rateType: String
+		currency: String
+	}	
 	type User {
 		id: ID
 		name: String
@@ -19,6 +31,17 @@ const typeDefs = gql`
 		user(id: ID!): User
 		users(role: UserRoleEnum): [User!]!
 	  }
+	input TravelInput{
+		client:String!
+		origin:String!
+		distance:String!
+		destin:String!
+		amount:String!
+		status:String!
+		currency:String!
+		rateType:String!
+	}
+
 	input UserInput{
 		name:String!
 		username:String!
@@ -33,8 +56,15 @@ const typeDefs = gql`
 	}
 	
 	type Query {
+		# user
 		getUser: User 
+		getTravelsByStatus(status:String!): [Travel] 
 	}
+	
+	type Mutation {
+		newTravel(input:TravelInput):Travel
+	}
+
 
 	type Mutation {
 		register(input:UserInput):User

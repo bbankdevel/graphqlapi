@@ -33,9 +33,9 @@ function server () {
         typeDefs,
         resolvers,
          plugins: [
-          // ApolloServerPluginLandingPageGraphQLPlayground({
+        //   ApolloServerPluginLandingPageGraphQLPlayground({
             //  options
-           //})
+          // })
           ] 
 
     });   
